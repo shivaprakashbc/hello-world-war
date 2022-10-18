@@ -1,17 +1,20 @@
 pipeline {
-	agent any
+	agent { label 'slave1' }
 
 	stages  {
 	   stage('checkout') {
 	      steps {
                       sh 'pwd'
 		      sh 'rm -rf hello-world-war'
-		      // sh ' git clone https://github.com/shivaprakashbc/hello-world-war.git'
+		      sh ' git clone https://github.com/shivaprakashbc/hello-world-war.git'
             	    }
                  }
            stage('build') {
                steps {
-                sh 'ls'
+                     sh 'ls'
+		     sh 'sudo apt install maven'  
+		     sh 'cd hello-world-war'
+		     sh 'mvn clean package'
                     }
                  }
            stage('Deploy') {
