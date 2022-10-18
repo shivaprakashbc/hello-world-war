@@ -6,7 +6,7 @@ pipeline {
 	      steps {
                       sh 'pwd'
 		      sh 'rm -rf hello-world-war'
-		      sh ' git clone https://github.com/shivaprakashbc/hello-world-war.git'
+		      sh 'git clone https://github.com/shivaprakashbc/hello-world-war.git'
             	    }
                  }
            stage('build') {
@@ -18,7 +18,7 @@ pipeline {
                  }
            stage('Deploy') {
                steps {
-                echo 'Deploying....'
+                sh 'cp /home/slave2/workspace/helloww_pipeline/target/hello-world-war-1.0.0.war /opt/tomcat/webapps'
                      }
                 }
           }
