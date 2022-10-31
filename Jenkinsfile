@@ -12,7 +12,6 @@ pipeline {
            stage('build') {
                steps {
                      sh 'ls'
-		     sh 'apt install maven'  
 		     sh 'cd hello-world-war'
 		     sh 'mvn clean package'
                     }
