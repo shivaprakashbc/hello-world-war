@@ -1,5 +1,5 @@
 pipeline {
-	agent { label 'slave2' }
+	agent { label 'slave1' }
 
 	stages  {
 	   stage('checkout') {
@@ -12,13 +12,14 @@ pipeline {
            stage('build') {
                steps {
                      sh 'ls'
+		     sh 'apt install maven'  
 		     sh 'cd hello-world-war'
 		     sh 'mvn clean package'
                     }
                  }
            stage('Deploy') {
                steps {
-                sh 'cp /home/slave2/workspace/helloww_pipeline/target/hello-world-war-1.0.0.war /opt/tomcat/webapps'
+                sh 'cp /home/slave1/workspace/helloworldwar_pipeline/target/hello-world-war-1.0.0.war /opt/tomcat/webapps'
                      }
                 }
           }
